@@ -1,0 +1,29 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: var(--nav-h);
+  min-height: calc(100vh - var(--nav-h));
+}
+
+.main-content.fullscreen {
+  padding-top: var(--nav-h);
+  overflow: hidden;
+  height: calc(100vh - var(--nav-h));
+}
+
+/* On mobile, bottom nav is shown so add bottom padding */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 0;
+    padding-bottom: var(--mob-nav-h);
+  }
+  .main-content.fullscreen {
+    padding-top: 0;
+    height: calc(100vh - var(--mob-nav-h));
+  }
+}
