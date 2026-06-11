@@ -1,0 +1,8 @@
+.bookings-page { padding: 32px 20px 60px; }
+.bookings-list { display: flex; flex-direction: column; gap: 16px; }
+.booking-card { padding: 20px; }
+.booking-card__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.booking-ref { font-size: 11px; letter-spacing: 2px; font-family: var(--font-head); }
+.booking-card__body { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+.booking-info { display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+.booking-actions { display: flex; gap: 10px; }
