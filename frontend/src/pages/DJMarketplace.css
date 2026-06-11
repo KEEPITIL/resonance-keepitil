@@ -1,0 +1,25 @@
+.dj-marketplace__hero {
+  background: linear-gradient(180deg, #0A001A 0%, #0A0A0A 100%);
+  padding: 60px 0 40px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.dj-marketplace__hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(153,0,255,0.12) 0%, transparent 60%);
+}
+.dj-hero-label { font-family: var(--font-head); color: var(--purple); font-size: 12px; letter-spacing: 5px; margin-bottom: 12px; }
+.dj-hero-title {
+  font-family: var(--font-head); font-size: clamp(26px, 5vw, 48px); font-weight: 900; letter-spacing: 4px;
+  background: linear-gradient(135deg, #fff 30%, var(--purple) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 12px;
+}
+
+.dj-filters { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 0; align-items: center; }
+.featured-toggle { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dim); cursor: pointer; white-space: nowrap; }
+.featured-toggle input { accent-color: var(--magenta); }
+
+.dj-results-header { margin-bottom: 20px; font-size: 12px; }
