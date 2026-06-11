@@ -1,0 +1,244 @@
+/* ── Discover Page — RESONANCE × KEEPITIL ───────────────────────────────── */
+
+/* ── Hero — inspired by Flyer 1 (summer) energy + Flyer 2 (techno) darkness  */
+.discover-hero {
+  position: relative;
+  overflow: hidden;
+  /* Deep layered background — photographic feel without a photo */
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(255,0,119,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 80% 110%, rgba(153,0,255,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 20% 100%, rgba(255,215,0,0.07) 0%, transparent 50%),
+    linear-gradient(180deg, #0A000F 0%, #080808 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 72px 24px 48px;
+  text-align: center;
+}
+
+/* Floating grid lines — like stage lighting grid */
+.discover-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,0,119,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,0,119,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+/* Bottom fade so grid doesn't bleed into content below */
+.discover-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, #080808);
+  pointer-events: none;
+}
+
+.discover-hero__content {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* "PRESENTED BY RESONANCE" micro-label — exact flyer pattern */
+.discover-hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 6px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.discover-hero__eyebrow strong {
+  color: var(--magenta);
+  text-shadow: 0 0 16px rgba(255,0,119,0.6);
+}
+
+/* BIG display headline — Bebas Neue, full flyer scale */
+.discover-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 112px);
+  letter-spacing: 8px;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  /* Gold → white gradient like Flyer 1 "KEEP IT SUMMER" yellow */
+  background: linear-gradient(160deg, #FFD700 0%, #FFFFFF 45%, #FF0077 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Subtle shadow so it pops on dark bg */
+  filter: drop-shadow(0 4px 16px rgba(255,0,119,0.3));
+}
+
+/* Secondary display word — pink, slightly smaller */
+.discover-hero__title-alt {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5.5vw, 64px);
+  letter-spacing: 10px;
+  color: var(--magenta);
+  text-shadow:
+    0 0 20px rgba(255,0,119,0.7),
+    0 0 40px rgba(255,0,119,0.3);
+  display: block;
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
+
+/* Tagline below headline */
+.discover-hero__sub {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+.discover-hero__sub span { color: var(--cyan); }  /* gold accent */
+
+/* ── Search ───────────────────────────────────────────────────────────────── */
+.discover-search {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.discover-search__input {
+  font-size: 14px;
+  padding: 16px 20px;
+  background: rgba(12,4,20,0.8);
+  border-color: rgba(255,0,119,0.25);
+  backdrop-filter: blur(8px);
+}
+.discover-search__input:focus {
+  border-color: var(--magenta);
+  box-shadow: 0 0 0 2px rgba(255,0,119,0.15), 0 0 24px rgba(255,0,119,0.1);
+}
+.discover-search__filters { display: flex; gap: 10px; }
+.discover-search__filters select { flex: 1; }
+
+/* ── Source/view toggle (native vs all events) ────────────────────────────── */
+.discover-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 28px auto 0;
+  background: rgba(10,0,20,0.6);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: fit-content;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.discover-toggle__btn {
+  padding: 8px 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.discover-toggle__btn:hover { color: var(--text); }
+.discover-toggle__btn.active {
+  background: var(--magenta);
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255,0,119,0.4);
+}
+.discover-toggle__sep {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Genre filter bar ─────────────────────────────────────────────────────── */
+.genre-filter-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 28px 0 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.genre-filter-bar::-webkit-scrollbar { display: none; }
+
+.genre-filter-pill {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-dim);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.genre-filter-pill:hover {
+  border-color: var(--magenta);
+  color: var(--text);
+  box-shadow: 0 0 10px rgba(255,0,119,0.15);
+}
+.genre-filter-pill.active {
+  background: var(--magenta);
+  border-color: var(--magenta);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(255,0,119,0.4);
+}
+
+/* ── Results ──────────────────────────────────────────────────────────────── */
+.discover-results { padding: 20px 0 60px; }
+.discover-results__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.discover-results__count strong { color: var(--cyan); }  /* gold count */
+
+/* ── Empty state ──────────────────────────────────────────────────────────── */
+.discover-empty {
+  text-align: center;
+  padding: 100px 20px;
+  color: var(--text-dim);
+}
+.discover-empty__icon {
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: rgba(255,0,119,0.15);
+  text-shadow: 0 0 40px rgba(255,0,119,0.1);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.discover-empty h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 4px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.discover-empty p { font-size: 12px; letter-spacing: 1px; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .discover-hero { padding: 56px 20px 40px; }
+  .discover-hero__title { letter-spacing: 4px; }
+  .discover-search__filters { flex-direction: column; }
+}
