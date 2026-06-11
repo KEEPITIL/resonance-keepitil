@@ -1,0 +1,128 @@
+.event-detail__hero {
+  position: relative;
+  min-height: 400px;
+  background: linear-gradient(135deg, #1A0A1A, #0A001A);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 40px;
+}
+.event-detail__hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 60%, transparent 100%);
+}
+.event-detail__hero-content { position: relative; padding-top: 80px; }
+.event-detail__badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.event-detail__title {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 5vw, 48px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.event-detail__meta {
+  display: flex; flex-wrap: wrap; gap: 20px;
+  font-size: 13px; color: var(--text-dim);
+}
+
+/* Grid */
+.event-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px;
+  padding: 40px 0;
+}
+@media (max-width: 900px) { .event-detail__grid { grid-template-columns: 1fr; } }
+
+/* Sections */
+.event-section { margin-bottom: 36px; }
+.event-section__title {
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.event-section__body { color: var(--text-dim); line-height: 1.8; font-size: 14px; }
+
+/* Lineup */
+.lineup-list { display: flex; flex-direction: column; gap: 12px; }
+.lineup-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.lineup-item.headliner { border-color: var(--magenta); background: rgba(204,0,136,0.05); }
+.lineup-headliner-badge {
+  font-size: 9px; letter-spacing: 2px;
+  background: var(--magenta); color: #fff;
+  padding: 2px 8px; border-radius: 2px;
+  font-family: var(--font-head);
+}
+.lineup-name { flex: 1; font-weight: 700; font-size: 14px; }
+.lineup-name a { color: var(--cyan); }
+.lineup-time { font-size: 12px; }
+
+/* Video embed */
+.video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); }
+.video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Venue info */
+.venue-info { display: flex; flex-direction: column; gap: 4px; }
+.venue-name { font-size: 16px; font-weight: 700; font-family: var(--font-head); letter-spacing: 1px; }
+.venue-address, .venue-city { font-size: 13px; }
+
+/* Ticket panel */
+.ticket-panel { padding: 24px; position: sticky; top: 90px; }
+.ticket-panel__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.ticket-panel__header h3 { font-family: var(--font-head); font-size: 16px; letter-spacing: 2px; }
+
+.ticket-tiers { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.ticket-tier {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px;
+  background: #0F0F0F;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  transition: border-color 0.2s;
+  gap: 12px;
+}
+.ticket-tier:hover:not(.sold-out) { border-color: var(--magenta); }
+.ticket-tier.selected { border-color: var(--magenta); background: rgba(204,0,136,0.08); }
+.ticket-tier.sold-out { opacity: 0.5; cursor: not-allowed; }
+.ticket-tier__info { display: flex; flex-direction: column; gap: 3px; }
+.ticket-tier__name { font-weight: 700; font-size: 14px; }
+.ticket-tier__desc { font-size: 11px; }
+.ticket-tier__price { font-size: 18px; font-weight: 700; color: var(--magenta); font-family: var(--font-head); white-space: nowrap; }
+
+.free-tier {
+  display: flex; justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(0,255,255,0.05);
+  border: 1px solid rgba(0,255,255,0.2);
+  border-radius: 6px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.ticket-fee-note {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 6px 16px;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: #0A0A0A;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+.ticket-fee-note hr { grid-column: 1/-1; border: none; border-top: 1px solid var(--border); margin: 4px 0; }
+.ticket-fee-note strong { color: var(--text); font-size: 14px; }
