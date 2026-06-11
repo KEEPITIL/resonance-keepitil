@@ -1,0 +1,279 @@
+/* ── EventCard — RESONANCE × KEEPITIL Flyer Style ──────────────────────── */
+
+.event-card {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.6),
+    0 0 32px rgba(255,0,119,0.25),
+    0 0 0 1px rgba(255,0,119,0.3);
+}
+
+/* ── Cover area — tall flyer ratio (2:3) ────────────────────────────────── */
+.event-card__cover {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  background: #110518;
+  overflow: hidden;
+}
+
+.event-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.event-card:hover .event-card__cover img {
+  transform: scale(1.05);
+}
+
+/* Placeholder when no cover image */
+.event-card__cover-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1A0030 0%, #0A0018 50%, #1A0010 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.event-card__placeholder-logo {
+  font-size: 48px;
+  color: var(--magenta);
+  opacity: 0.3;
+  font-family: var(--font-head);
+  text-shadow: 0 0 30px var(--magenta);
+}
+
+/* Legacy alias */
+.event-card__cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.05) 35%,
+    rgba(8,2,18,0.7) 60%,
+    rgba(8,2,18,0.98) 100%
+  );
+  pointer-events: none;
+}
+
+/* The same class used in the new JS version */
+.event-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.05) 35%,
+    rgba(8,2,18,0.7) 60%,
+    rgba(8,2,18,0.98) 100%
+  );
+  pointer-events: none;
+}
+
+/* Pink glow strip on hover */
+.event-card:hover .event-card__overlay::before,
+.event-card:hover .event-card__cover-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--magenta), var(--purple), var(--magenta));
+  box-shadow: 0 0 12px var(--magenta);
+}
+
+/* ── Top row — genre + badges ───────────────────────────────────────────── */
+.event-card__top-row {
+  position: absolute;
+  top: 10px; left: 10px; right: 52px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+/* Legacy: badges directly in cover */
+.event-card__badges {
+  position: absolute;
+  top: 10px; left: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+}
+
+/* When inside top-row, badges aren't positioned */
+.event-card__top-row .event-card__badges {
+  position: static;
+}
+
+.event-card__genre {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(153,0,255,0.25);
+  border: 1px solid rgba(153,0,255,0.5);
+  border-radius: 3px;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #CC99FF;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+  backdrop-filter: blur(4px);
+}
+
+/* Legacy genre pills overlay */
+.event-card__genres {
+  position: absolute;
+  bottom: 10px; left: 10px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+/* ── Price tag — top right ──────────────────────────────────────────────── */
+.event-card__price {
+  position: absolute;
+  top: 10px; right: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 1px;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  line-height: 1;
+}
+.event-card__price--paid,
+.event-card__price:not(.event-card__price--free):not(.event-card__price--sold) {
+  background: rgba(255,215,0,0.2);
+  border: 1px solid rgba(255,215,0,0.6);
+  color: var(--cyan);
+  text-shadow: 0 0 10px rgba(255,215,0,0.5);
+}
+.event-card__price--free {
+  background: rgba(0,255,170,0.12);
+  border: 1px solid rgba(0,255,170,0.4);
+  color: #00FFAA;
+}
+.event-card__price--sold {
+  background: rgba(255,102,0,0.15);
+  border: 1px solid rgba(255,102,0,0.5);
+  color: var(--orange);
+}
+
+/* ── Bottom info block ──────────────────────────────────────────────────── */
+.event-card__info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0 14px 16px;
+  z-index: 2;
+}
+
+/* Legacy body for old markup */
+.event-card__body {
+  padding: 0 14px 16px;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Headliner name — pink, like "PRESENTED BY" on flyers */
+.event-card__headliner {
+  margin: 0 0 3px;
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--magenta);
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(255,0,119,0.6);
+}
+
+/* Title — Bebas Neue, large, exactly like flyer headlines */
+.event-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3.5vw, 28px);
+  letter-spacing: 2px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.8),
+    0 0 24px rgba(255,0,119,0.2);
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Date + city meta strip */
+.event-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+}
+.event-card__date  { color: var(--cyan); }
+.event-card__city  { color: rgba(255,255,255,0.7); }
+.event-card__sep   { color: var(--magenta); font-size: 6px; }
+
+/* Legacy venue/footer styles — kept for any pages using old markup */
+.event-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.event-card__venue {
+  font-size: 9px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+}
+
+/* ── Source platform badge — external events only ───────────────────────── */
+.event-card__source-badge {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--source-color, #888);
+  border: 1px solid;
+  border-color: var(--source-color, #888);
+  background: rgba(0,0,0,0.3);
+  opacity: 0.85;
+}
+
+/* External card variant */
+.event-card--external:hover {
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.6),
+    0 0 32px rgba(153,0,255,0.2),
+    0 0 0 1px rgba(153,0,255,0.25);
+}
+
+/* Compact variant */
+.event-card--compact .event-card__cover { aspect-ratio: 16 / 9; }
+.event-card--compact .event-card__title { font-size: 18px; }
